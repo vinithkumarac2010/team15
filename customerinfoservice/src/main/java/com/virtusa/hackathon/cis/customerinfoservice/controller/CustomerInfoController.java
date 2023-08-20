@@ -23,10 +23,10 @@ public class CustomerInfoController {
 	private CustomerInfoRepository customerInfoRepository;
 	
 
-	@PostMapping("/myCustomer")
-	public List<Customer> getCustomerDetails(@RequestHeader("customerId") String customerId,@RequestBody Customer customer) {
+	@PostMapping("/customerInfo/myCustomer")
+	public List<Customer> getCustomerDetails(@RequestHeader("customerId") String customerId) {
 		logger.info("getCustomerDetails() method started");
-		List<Customer> customerDetails = customerInfoRepository.findByCustomerId(customer.getCustomerId());
+		List<Customer> customerDetails = customerInfoRepository.findByCustomerId(Integer.parseInt(customerId));
 		logger.info("getCustomerDetails() method ended");
 		if (customerDetails != null) {
 			return customerDetails;
